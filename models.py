@@ -1,9 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Metadata
 
-metadata = Metadata()
-
-db = SQLAlchemy(metadata=metadata)
+db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
