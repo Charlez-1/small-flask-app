@@ -2,11 +2,11 @@ from flask import jsonify, request, Blueprint
 from models import db, Items
 
 Items_bp = Blueprint('Items_bp', __name__)
-
+# create
 @Items_bp.route('/items', methods=['POST'])
 def create_item():
     data = request.json
-    new_item = Items(**data)
+    new_item = Items(name=data["name"], description=data["description"], price=data["price"])
     db.session.add(new_item)
     db.session.commit()
     return jsonify(new_item.to_dict()), 201
